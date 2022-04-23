@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ACER"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-20 05:48:10 AM"/>
+        <attribute name="created" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMTo1ODoxMCBQTTsyNjA0"/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMTo1ODoxNCBQTTsxO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTI7MTE6MjE6MDcgUE07aW5zZXJ0aW9uX3Nob3J0LmZwcmc7NzU1Mw=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0yMDswNTo0ODowNiBBTTsxO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTU7MDE6NDc6MDAgUE07Y291bnRpbmdfc29ydC5mcHJnOzczMjM="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0yMDswNTo0ODoxMCBBTTszOzI3MDA="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, j, n" type="Integer" array="False" size=""/>
+            <input variable="n"/>
+            <declare name="data" type="Integer" array="True" size="n"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <input variable="data[i]"/>
+            </for>
+            <comment text="tampilkan elemen array"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="data[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+            <comment text="teknik merge short"/>
+            <call expression="mergeSort(data, n)"/>
+            <comment text="cetak hasil merge sort"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="data[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="merge" type="None" variable="">
+        <parameters>
+            <parameter name="data" type="Integer" array="True"/>
+            <parameter name="dataKiri" type="Integer" array="True"/>
+            <parameter name="dataKanan" type="Integer" array="True"/>
+            <parameter name="sData" type="Integer" array="False"/>
+            <parameter name="sKiri" type="Integer" array="False"/>
+            <parameter name="sKanan" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="n, i, j, k" type="Integer" array="False" size=""/>
+            <assign variable="n" expression="sData"/>
+            <assign variable="i" expression="0"/>
+            <assign variable="j" expression="0"/>
+            <assign variable="k" expression="0"/>
+            <while expression="i &lt; sKiri &amp;&amp; j &lt; sKanan">
+                <if expression="dataKiri[i] &lt; dataKanan[j]">
+                    <then>
+                        <assign variable="data[k]" expression="dataKiri[i]"/>
+                        <assign variable="i" expression="i+1"/>
+                        <assign variable="k" expression="k+1"/>
+                    </then>
+                    <else>
+                        <assign variable="data[k]" expression="dataKanan[j]"/>
+                        <assign variable="j" expression="j+1"/>
+                        <assign variable="k" expression="k+1"/>
+                    </else>
+                </if>
+            </while>
+            <while expression="i &lt; sKiri">
+                <assign variable="data[k]" expression="dataKiri[i]"/>
+                <assign variable="i" expression="i+1"/>
+                <assign variable="k" expression="k+1"/>
+            </while>
+            <while expression="j &lt; sKanan">
+                <assign variable="data[k]" expression="dataKanan[j]"/>
+                <assign variable="j" expression="j+1"/>
+                <assign variable="k" expression="k+1"/>
+            </while>
+        </body>
+    </function>
+    <function name="mergeSort" type="None" variable="">
+        <parameters>
+            <parameter name="data" type="Integer" array="True"/>
+            <parameter name="n" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <if expression="n&gt;=2">
+                <then>
+                    <declare name="tengah" type="Integer" array="False" size=""/>
+                    <assign variable="tengah" expression="n / 2"/>
+                    <declare name="sKiri, sKanan" type="Integer" array="False" size=""/>
+                    <assign variable="sKiri" expression="tengah"/>
+                    <assign variable="sKanan" expression="n-tengah"/>
+                    <declare name="dataKiri" type="Integer" array="True" size="sKiri"/>
+                    <declare name="dataKanan" type="Integer" array="True" size="sKanan"/>
+                    <declare name="i" type="Integer" array="False" size=""/>
+                    <for variable="i" start="0" end="sKiri-1" direction="inc" step="1">
+                        <assign variable="dataKiri[i]" expression="data[i]"/>
+                    </for>
+                    <for variable="i" start="0" end="sKanan-1" direction="inc" step="1">
+                        <assign variable="dataKanan[i]" expression="data[tengah+i]"/>
+                    </for>
+                    <call expression="mergeSort(dataKiri, sKiri)"/>
+                    <call expression="mergeSort(dataKanan, sKanan)"/>
+                    <call expression="merge(data, dataKiri, dataKanan, n, sKiri, sKanan)"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

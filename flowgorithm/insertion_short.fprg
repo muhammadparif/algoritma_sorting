@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ACER"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-12 11:57:35 PM"/>
+        <attribute name="created" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMToyMTowNyBQTTsyNjAw"/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMToyMToxMSBQTTsxO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTA7MTE6MjI6MzcgUE07c2VsZWN0aW9uX3Nob3J0LmZwcmc7NzUyMQ=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMToyNDo1NSBQTTsxO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTA7MTA6MzQ6MTkgUE07YnViYmxlX3Nob3J0LmZwcmc7NzE4OA=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMjsxMTo1NzozNSBQTTsyOzI3MTk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n" type="Real" array="False" size=""/>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <input variable="n"/>
+            <declare name="arr" type="Real" array="True" size="n"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <input variable="arr[i]"/>
+            </for>
+            <comment text="cetak elemen array"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="arr[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+            <comment text="teknik insertion sort"/>
+            <assign variable="i" expression="1"/>
+            <while expression="i&lt;n">
+                <declare name="temp" type="Integer" array="False" size=""/>
+                <assign variable="temp" expression="arr[i]"/>
+                <declare name="next" type="Boolean" array="False" size=""/>
+                <assign variable="next" expression="true"/>
+                <assign variable="j" expression="i"/>
+                <while expression="next == true">
+                    <if expression="temp &lt; arr[j-1]">
+                        <then>
+                            <assign variable="arr[j]" expression="arr[j-1]"/>
+                            <assign variable="j" expression="j-1"/>
+                            <if expression="j &lt;= 0">
+                                <then>
+                                    <assign variable="next" expression="false"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </then>
+                        <else>
+                            <assign variable="next" expression="false"/>
+                        </else>
+                    </if>
+                </while>
+                <assign variable="arr[j]" expression="temp"/>
+                <assign variable="i" expression="i+1"/>
+            </while>
+            <comment text="menampilkan hasil sorting"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="arr[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

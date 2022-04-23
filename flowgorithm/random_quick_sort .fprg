@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ACER"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-15 12:20:41 PM"/>
+        <attribute name="created" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xNTsxMTo1NToxNSBBTTsyNTk0"/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xNTsxMjowMDo1OSBQTTsxO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTA7MTA6MzQ6MTkgUE07YnViYmxlX3Nob3J0LmZwcmc7NzE5MA=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xNTsxMjowMzowMyBQTTsyO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTI7MTE6MjE6MDcgUE07aW5zZXJ0aW9uX3Nob3J0LmZwcmc7NzU0Ng=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xNTsxMjoyMDo0MSBQTTs0OzI3MTI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, j, n" type="Integer" array="False" size=""/>
+            <input variable="n"/>
+            <declare name="data" type="Integer" array="True" size="n"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <input variable="data[i]"/>
+            </for>
+            <comment text="tampilkan elemen array"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="data[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+            <comment text="memulai QuickSort"/>
+            <call expression="quickSort(data, 0, n-1)"/>
+            <comment text="tampilkan hasil sorting"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="data[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="partisi" type="Integer" variable="indexPartisi">
+        <parameters>
+            <parameter name="data" type="Integer" array="True"/>
+            <parameter name="low" type="Integer" array="False"/>
+            <parameter name="high" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="indexPartisi, pivot, i, j, temp" type="Integer" array="False" size=""/>
+            <assign variable="pivot" expression="data[high]"/>
+            <assign variable="i" expression="low-1"/>
+            <for variable="j" start="low" end="high-1" direction="inc" step="1">
+                <if expression="data[j] &lt; pivot">
+                    <then>
+                        <assign variable="i" expression="i+1"/>
+                        <comment text="tukar data pada index i dan j"/>
+                        <assign variable="temp" expression="data[i]"/>
+                        <assign variable="data[i]" expression="data[j]"/>
+                        <assign variable="data[j]" expression="temp"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <comment text="tukar data pada index i+1 dan high&#13;&#10;"/>
+            <assign variable="temp" expression="data[i+1]"/>
+            <assign variable="data[i+1]" expression="data[high]"/>
+            <assign variable="data[high]" expression="temp"/>
+            <assign variable="indexpartisi" expression="1+i"/>
+        </body>
+    </function>
+    <function name="quickSort" type="None" variable="">
+        <parameters>
+            <parameter name="data" type="Integer" array="True"/>
+            <parameter name="low" type="Integer" array="False"/>
+            <parameter name="high" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <if expression="low &lt; high">
+                <then>
+                    <declare name="indexPartisi" type="Integer" array="False" size=""/>
+                    <assign variable="indexPartisi" expression="partisi(data,low,high)"/>
+                    <call expression="quickSort(data, low, indexPartisi-1)"/>
+                    <call expression="quickSort(data, indexPartisi+1, high)"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

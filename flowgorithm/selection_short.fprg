@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ACER"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-10 11:39:46 PM"/>
+        <attribute name="created" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMDsxMToyMjozNyBQTTsyNjAy"/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMDsxMTozNjoyMSBQTTszO0FDRVI7REVTS1RPUC0wS0hWNENBOzIwMjItMDQtMTA7MTA6MzQ6MTkgUE07YnViYmxlX3Nob3J0LmZwcmc7NzE4NA=="/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMDsxMTozOTo0NiBQTTs0OzI3MjE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n" type="Real" array="False" size=""/>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <input variable="n"/>
+            <declare name="arr" type="Real" array="True" size="n"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <input variable="arr[i]"/>
+            </for>
+            <comment text="teknik selection short"/>
+            <for variable="i" start="0" end="n-2" direction="inc" step="1">
+                <declare name="min" type="Integer" array="False" size=""/>
+                <assign variable="min" expression="i"/>
+                <for variable="j" start="1+i" end="n-1" direction="inc" step="1">
+                    <if expression="arr[j] &lt; arr[min]">
+                        <then>
+                            <assign variable="min" expression="j"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+                <if expression="min != i">
+                    <then>
+                        <comment text="proses SWAP"/>
+                        <declare name="temp" type="Integer" array="False" size=""/>
+                        <assign variable="temp" expression="arr[i]"/>
+                        <assign variable="arr[i]" expression="arr[min]"/>
+                        <assign variable="arr[min]" expression="temp"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <comment text="cetak algoritma sorting insertion sort"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="arr[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

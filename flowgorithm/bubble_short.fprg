@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ACER"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-04-10 11:21:29 PM"/>
+        <attribute name="created" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMDsxMDozNDoxOSBQTTsyNjA0"/>
+        <attribute name="edited" value="QUNFUjtERVNLVE9QLTBLSFY0Q0E7MjAyMi0wNC0xMDsxMToyMToyOSBQTTszOzI3MTI="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n" type="Real" array="False" size=""/>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <input variable="n"/>
+            <declare name="arr" type="Real" array="True" size="n"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <input variable="arr[i]"/>
+            </for>
+            <comment text="teknik bubble sort"/>
+            <for variable="i" start="0" end="n-2" direction="inc" step="1">
+                <for variable="j" start="0" end="n-2" direction="inc" step="1">
+                    <if expression="arr[j] &gt; arr[j+1]">
+                        <then>
+                            <declare name="temp" type="Integer" array="False" size=""/>
+                            <assign variable="temp" expression="arr[j]"/>
+                            <assign variable="arr[j]" expression="arr[j+1]"/>
+                            <assign variable="arr[j+1]" expression="temp"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+            </for>
+            <comment text="cetak elemen array"/>
+            <for variable="i" start="0" end="n-1" direction="inc" step="1">
+                <output expression="arr[i]&amp; &quot; &quot;" newline="False"/>
+            </for>
+            <output expression="&quot;&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
